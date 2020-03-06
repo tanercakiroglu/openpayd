@@ -18,6 +18,8 @@ Session.vim
 *.iws
 .idea
 *plugin.xml
+*.mvn
+mvnw
 
 # Eclipse generated files
 *.pydevproject
@@ -84,4 +86,5 @@ log.txt
 *.csv
 !local_policy.jar
 !US_export_policy.jar
+*.cmd
 
