@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public interface ExchangeRateCalculationDtoConverter {
 
-    ExchangeRateCalculationDto convert(String from , String to, BigDecimal amount);
+    ExchangeRateCalculationDto convert(String from, String to, BigDecimal amount);
 
     ExchangeRateCalculationDto convert(ConversionAmountRequest request);
 }

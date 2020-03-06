@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface ConversionService {
 
-     ConversionRateResponse getConversionAmount(ConversionAmountRequest rateRequest) throws IOException, BusinessException;
-     List<TransactionHistoryDto> findAllConversionsByIdOrInsertDate(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize) ;
+    ConversionRateResponse getConversionAmount(ConversionAmountRequest rateRequest) throws IOException, BusinessException;
+
+    List<TransactionHistoryDto> findAllConversionsByIdOrInsertDate(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize);
 }

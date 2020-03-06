@@ -31,7 +31,7 @@ public class TransactionHistoryDto {
         this.target = builder.target;
         this.amountInTargetCurrency = builder.amountInTargetCurrency;
         this.insertDate = builder.insertDate;
-        this.id=  builder.id;
+        this.id = builder.id;
     }
 
     public String getSource() {
@@ -55,7 +55,8 @@ public class TransactionHistoryDto {
 
         public Builder() {
         }
-        public Builder id( Long id) {
+
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }

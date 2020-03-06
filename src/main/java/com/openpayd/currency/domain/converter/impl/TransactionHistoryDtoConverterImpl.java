@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 class TransactionHistoryDtoConverterImpl implements Converter<TransactionHistoryDto, TransactionHistory> {
+
     @Override
     public TransactionHistory convert(TransactionHistoryDto source) {
         final TransactionHistory transactionHistory = new TransactionHistory();

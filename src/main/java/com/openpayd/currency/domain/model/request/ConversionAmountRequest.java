@@ -9,11 +9,11 @@ import java.util.Objects;
 public class ConversionAmountRequest implements Serializable {
 
     @NotBlank(message = "Source must not be null or empty")
-    private  String source;
+    private String source;
     @NotBlank(message = "Target must not be null or empty")
-    private  String target ;
+    private String target;
     @NotNull(message = "Amount must not be null")
-    private  BigDecimal amount;
+    private BigDecimal amount;
 
     public ConversionAmountRequest() {
     }

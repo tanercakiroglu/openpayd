@@ -27,6 +27,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 class ConversionServiceImplTest {
+
     @Mock
     ExchangeService exchangeService;
     @Mock

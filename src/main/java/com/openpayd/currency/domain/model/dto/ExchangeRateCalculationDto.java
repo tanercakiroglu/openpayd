@@ -10,9 +10,9 @@ public class ExchangeRateCalculationDto {
     private final BigDecimal amount;
 
     public ExchangeRateCalculationDto(Builder builder) {
-        this.source=builder.source;
-        this.amount=builder.amount;
-        this.target=builder.target;
+        this.source = builder.source;
+        this.amount = builder.amount;
+        this.target = builder.target;
 
     }
 
@@ -28,30 +28,31 @@ public class ExchangeRateCalculationDto {
         return amount;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private String source, target;
         private BigDecimal amount;
 
-        public Builder(){ }
+        public Builder() {
+        }
 
-        public Builder source(String source){
+        public Builder source(String source) {
             this.source = source;
             return this;
         }
 
-        public Builder target(String target){
+        public Builder target(String target) {
             this.target = target;
             return this;
         }
 
-        public Builder amount(BigDecimal amount){
+        public Builder amount(BigDecimal amount) {
             this.amount = amount;
             return this;
         }
 
-        public ExchangeRateCalculationDto build(){
-            return  new ExchangeRateCalculationDto(this);
+        public ExchangeRateCalculationDto build() {
+            return new ExchangeRateCalculationDto(this);
         }
     }
 

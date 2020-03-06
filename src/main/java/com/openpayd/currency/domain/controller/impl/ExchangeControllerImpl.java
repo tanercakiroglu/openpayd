@@ -20,7 +20,7 @@ class ExchangeControllerImpl implements ExchangeController {
         this.exchangeService = exchangeService;
     }
 
-    public ResponseEntity<ExchangeRateResponse> example(String from , String to) throws IOException, BusinessException {
-        return ResponseEntity.ok(exchangeService.getExchangeRateByPair(from,to));
+    public ResponseEntity<ExchangeRateResponse> example(String from, String to) throws IOException, BusinessException {
+        return ResponseEntity.ok(exchangeService.getExchangeRateByPair(from, to));
     }
 }

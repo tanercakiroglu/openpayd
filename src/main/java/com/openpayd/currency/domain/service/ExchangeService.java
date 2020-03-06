@@ -10,5 +10,6 @@ import java.io.IOException;
 public interface ExchangeService {
 
     ExchangeRateResponse getExchangeRateByPair(String from, String to) throws IOException, BusinessException;
+
     CalculatedExchangeRateDto getExchangeRateAndCalculatePair(ExchangeRateCalculationDto exchangeRateCalculationDto) throws IOException, BusinessException;
 }

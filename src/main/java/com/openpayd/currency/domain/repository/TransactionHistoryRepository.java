@@ -9,6 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface TransactionHistoryRepository  extends CrudRepository<TransactionHistory, Long> {
+public interface TransactionHistoryRepository extends CrudRepository<TransactionHistory, Long> {
     List<TransactionHistory> findAllByIdOrInsertDate(Long id, LocalDate insertDate, Pageable pageable);
 }

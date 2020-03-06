@@ -18,7 +18,7 @@ public class LogInterceptor {
             + "&& @within(com.openpayd.currency.aspect.loggable.Loggable)" + "&& @within(log)", argNames = "jp,bean,log")
     public void auditLog(JoinPoint jp, Object bean, Loggable log) {
         final Logger logger = LoggerFactory.getLogger(bean.getClass());
-        if(logger.isInfoEnabled()) {
+        if (logger.isInfoEnabled()) {
             logger.info(String.format("Log Message: %s", log.message()));
             logger.info(String.format("Bean Called: %s", bean.getClass().getName()));
             logger.info(String.format("Method Called: %s", jp.getSignature().getName()));
@@ -27,7 +27,7 @@ public class LogInterceptor {
 
     @Around(value = "com.openpayd.currency.aspect.loggable.LogManager.performanceLog()" + "&& target(bean) "
             + "&& @within(com.openpayd.currency.aspect.loggable.Loggable)" + "&& @within(log)", argNames = "joinPoint,bean,log")
-    public Object performanceLog(ProceedingJoinPoint joinPoint, Object bean,Loggable log) throws Throwable {
+    public Object performanceLog(ProceedingJoinPoint joinPoint, Object bean, Loggable log) throws Throwable {
         final Logger logger = LoggerFactory.getLogger(bean.getClass());
         final var stopWatch = new StopWatch();
         stopWatch.start();
@@ -52,7 +52,7 @@ public class LogInterceptor {
         logMessage.append(" execution time: ");
         logMessage.append(stopWatch.getTotalTimeMillis());
         logMessage.append(" ms");
-        if(logger.isInfoEnabled()) {
+        if (logger.isInfoEnabled()) {
             logger.info(logMessage.toString());
         }
         return ret;

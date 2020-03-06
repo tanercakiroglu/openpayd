@@ -27,12 +27,13 @@ public class ExchangeRateDelegateServiceImpl implements ExchangeRateDelegateServ
                 .url(URL_PROVIDER)
                 .build();
 
-        try(Response response = client.newCall(request).execute()) {
+        try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful())
                 throw new RemoteCallException(String.valueOf(response.code()));
-            return  Objects.requireNonNull(response.body()).string();
+            return Objects.requireNonNull(response.body()).string();
         }
     }
+
     private ExchangeRateDelegateResponse map(String response) throws IOException {
         return Mapper.mapper.readValue(response, ExchangeRateDelegateResponse.class);
     }

@@ -5,5 +5,5 @@ import com.openpayd.currency.domain.model.response.ConversionRateResponse;
 
 public interface ConversationRateResponseConverter {
 
-    ConversionRateResponse convert(CalculatedExchangeRateDto source,Long transactionId);
+    ConversionRateResponse convert(CalculatedExchangeRateDto source, Long transactionId);
 }

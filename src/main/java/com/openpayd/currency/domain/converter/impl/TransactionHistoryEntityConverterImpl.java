@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
-public class TransactionHistoryEntityConverterImpl implements Converter<TransactionHistory,TransactionHistoryDto> {
+public class TransactionHistoryEntityConverterImpl implements Converter<TransactionHistory, TransactionHistoryDto> {
 
     @Override
     public TransactionHistoryDto convert(TransactionHistory source) {

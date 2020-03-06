@@ -48,14 +48,14 @@ class ConversionServiceImpl implements ConversionService {
                 .target(calculatedExchangeRateDto.getTarget())
                 .insertDate(LocalDate.now())
                 .build());
-        return conversationRateResponseConverter.convert(calculatedExchangeRateDto,transactionId);
+        return conversationRateResponseConverter.convert(calculatedExchangeRateDto, transactionId);
     }
 
     @Override
-    public List<TransactionHistoryDto> findAllConversionsByIdOrInsertDate(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize)  {
-        if(Objects.isNull(id) && Objects.isNull(insertDate))
+    public List<TransactionHistoryDto> findAllConversionsByIdOrInsertDate(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize) {
+        if (Objects.isNull(id) && Objects.isNull(insertDate))
             throw new IllegalArgumentException("At least one parameter has value id or insert date");
         Pageable paging = PageRequest.of(pageNo, pageSize);
-        return transactionHistoryService.findAllByIdOrInsertDate(id,insertDate,paging);
+        return transactionHistoryService.findAllByIdOrInsertDate(id, insertDate, paging);
     }
 }

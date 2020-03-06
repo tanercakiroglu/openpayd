@@ -27,8 +27,8 @@ class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public ExchangeRateResponse getExchangeRateByPair(String from, String to) throws IOException, BusinessException {
-        var exchangeRateCalculationDto= exchangeRateCalculationDtoConverter.convert(from,to,BigDecimal.ONE);
-        var calculatedExchangeRateDto=getCalculatedExchangeRateDto(exchangeRateCalculationDto);
+        var exchangeRateCalculationDto = exchangeRateCalculationDtoConverter.convert(from, to, BigDecimal.ONE);
+        var calculatedExchangeRateDto = getCalculatedExchangeRateDto(exchangeRateCalculationDto);
         return new ExchangeRateResponse(calculatedExchangeRateDto.getRate());
     }
 
@@ -45,8 +45,8 @@ class ExchangeServiceImpl implements ExchangeService {
             throw new BusinessException("Currency value not found");
         }
         var rate = exchangeRateCalculator.getExchangeRatePair(source, target);
-        var amountInTargetCurrency= exchangeRateCalculator.calculateAmountInTargetCurrency(exchangeRateCalculationDto.getAmount(),rate);
-        return new  CalculatedExchangeRateDto.Builder()
+        var amountInTargetCurrency = exchangeRateCalculator.calculateAmountInTargetCurrency(exchangeRateCalculationDto.getAmount(), rate);
+        return new CalculatedExchangeRateDto.Builder()
                 .amount(exchangeRateCalculationDto.getAmount())
                 .rate(rate)
                 .source(exchangeRateCalculationDto.getSource())

@@ -6,9 +6,11 @@ import com.openpayd.currency.domain.repository.TransactionHistoryRepository;
 import com.openpayd.currency.domain.service.TransactionHistoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 class TransactionHistoryServiceImplTest {
 
     @Mock

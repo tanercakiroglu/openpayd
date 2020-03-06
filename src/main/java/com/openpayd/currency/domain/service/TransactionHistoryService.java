@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TransactionHistoryService {
     Long save(TransactionHistoryDto transactionHistoryDto);
+
     List<TransactionHistoryDto> findAllByIdOrInsertDate(Long id, LocalDate insertDate, Pageable pageable);
 }

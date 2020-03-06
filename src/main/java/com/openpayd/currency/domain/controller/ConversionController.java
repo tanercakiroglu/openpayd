@@ -23,9 +23,9 @@ public interface ConversionController {
 
     @GetMapping("/exchangeRate/conversions")
     List<TransactionHistoryDto> getConversionList(
-            @RequestParam(value = "id",required = false) Long id,
-            @RequestParam(value = "insertDate",required = false)
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate insertDate,
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "insertDate", required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate insertDate,
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize
     ) throws BusinessException;

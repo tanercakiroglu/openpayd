@@ -10,6 +10,6 @@ import java.io.IOException;
 
 public interface ExchangeController {
 
-     @GetMapping("/exchangeRate/from/{from}/to/{to}")
-     ResponseEntity<ExchangeRateResponse> example(@PathVariable("from") String from, @PathVariable("to") String to) throws IOException, BusinessException;
+    @GetMapping("/exchangeRate/from/{from}/to/{to}")
+    ResponseEntity<ExchangeRateResponse> example(@PathVariable("from") String from, @PathVariable("to") String to) throws IOException, BusinessException;
 }

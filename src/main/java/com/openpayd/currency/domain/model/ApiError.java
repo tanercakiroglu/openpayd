@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class ApiError  implements Serializable {
+public class ApiError implements Serializable {
 
     private List<String> errors;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")

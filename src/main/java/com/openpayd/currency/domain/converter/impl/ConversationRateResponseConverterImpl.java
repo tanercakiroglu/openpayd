@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 class ConversationRateResponseConverterImpl implements ConversationRateResponseConverter {
 
     @Override
-    public ConversionRateResponse convert(CalculatedExchangeRateDto source,Long transactionId) {
-         return new ConversionRateResponse
-                 .Builder()
-                 .amount(source.getAmountInTargetCurrency())
-                 .transactionId(transactionId)
-                 .build();
+    public ConversionRateResponse convert(CalculatedExchangeRateDto source, Long transactionId) {
+        return new ConversionRateResponse
+                .Builder()
+                .amount(source.getAmountInTargetCurrency())
+                .transactionId(transactionId)
+                .build();
     }
 }

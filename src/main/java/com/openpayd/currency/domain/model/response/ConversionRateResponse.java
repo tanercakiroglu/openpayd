@@ -10,8 +10,8 @@ public class ConversionRateResponse implements Serializable {
     private final BigDecimal amount;
 
     public ConversionRateResponse(Builder builder) {
-        this.transactionId =builder.transactionId;
-        this.amount=builder.amount;
+        this.transactionId = builder.transactionId;
+        this.amount = builder.amount;
     }
 
     public Long getTransactionId() {
@@ -22,25 +22,26 @@ public class ConversionRateResponse implements Serializable {
         return amount;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private Long transactionId;
         private BigDecimal amount;
 
-        public Builder(){ }
+        public Builder() {
+        }
 
-        public  Builder transactionId(Long transactionId){
+        public Builder transactionId(Long transactionId) {
             this.transactionId = transactionId;
             return this;
         }
 
-        public Builder amount(BigDecimal amount){
+        public Builder amount(BigDecimal amount) {
             this.amount = amount;
             return this;
         }
 
-        public ConversionRateResponse build(){
-            return  new ConversionRateResponse(this);
+        public ConversionRateResponse build() {
+            return new ConversionRateResponse(this);
         }
     }
 
