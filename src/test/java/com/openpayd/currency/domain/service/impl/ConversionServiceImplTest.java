@@ -9,9 +9,9 @@ import com.openpayd.currency.domain.service.ConversionService;
 import com.openpayd.currency.domain.service.ExchangeService;
 import com.openpayd.currency.domain.service.TransactionHistoryService;
 import com.openpayd.currency.exception.BusinessException;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -26,7 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-class ConversionServiceImplTest {
+public class ConversionServiceImplTest {
 
     @Mock
     ExchangeService exchangeService;
@@ -39,7 +39,7 @@ class ConversionServiceImplTest {
 
     private ConversionService conversionService;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         conversionService = new ConversionServiceImpl(
