@@ -18,7 +18,7 @@ public class ExchangeRateDelegateServiceImpl implements ExchangeRateDelegateServ
     private static final OkHttpClient client = new OkHttpClient();
 
     @Override
-    public ExchangeRateDelegateResponse getExchangeRateByDate() throws IOException {
+    public ExchangeRateDelegateResponse getLatestExchangeRate() throws IOException {
         return map(doGetRequest());
     }
 
@@ -35,6 +35,6 @@ public class ExchangeRateDelegateServiceImpl implements ExchangeRateDelegateServ
     }
 
     private ExchangeRateDelegateResponse map(String response) throws IOException {
-        return Mapper.mapper.readValue(response, ExchangeRateDelegateResponse.class);
+        return Mapper.jsonMapper.readValue(response, ExchangeRateDelegateResponse.class);
     }
 }

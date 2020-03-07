@@ -22,7 +22,7 @@ public interface ConversionController {
     ResponseEntity<ConversionRateResponse> convertRate(@Valid @RequestBody ConversionAmountRequest rateRequest) throws IOException, BusinessException;
 
     @GetMapping("/exchangeRate/conversions")
-    List<TransactionHistoryDto> getConversionList(
+    ResponseEntity<List<TransactionHistoryDto>> getConversionList(
             @RequestParam(value = "id", required = false) Long id,
             @RequestParam(value = "insertDate", required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate insertDate,

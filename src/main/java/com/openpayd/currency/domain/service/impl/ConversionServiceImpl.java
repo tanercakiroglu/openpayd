@@ -10,9 +10,9 @@ import com.openpayd.currency.domain.service.ExchangeService;
 import com.openpayd.currency.domain.service.TransactionHistoryService;
 import com.openpayd.currency.exception.BusinessException;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,6 +21,7 @@ import java.util.Objects;
 @Service
 class ConversionServiceImpl implements ConversionService {
 
+    private static final String HAS_VALUE_ID_OR_INSERT_DATE = "At least one parameter has value id or insert date";
     private final ExchangeService exchangeService;
     private final ExchangeRateCalculationDtoConverter exchangeRateCalculationDtoConverter;
     private final ConversationRateResponseConverter conversationRateResponseConverter;
@@ -48,14 +49,14 @@ class ConversionServiceImpl implements ConversionService {
                 .target(calculatedExchangeRateDto.getTarget())
                 .insertDate(LocalDate.now())
                 .build());
-        return conversationRateResponseConverter.convert(calculatedExchangeRateDto, transactionId);
+        return conversationRateResponseConverter.convert(calculatedExchangeRateDto, transactionId.orElse(null));
     }
 
     @Override
     public List<TransactionHistoryDto> findAllConversionsByIdOrInsertDate(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize) {
         if (Objects.isNull(id) && Objects.isNull(insertDate))
-            throw new IllegalArgumentException("At least one parameter has value id or insert date");
-        Pageable paging = PageRequest.of(pageNo, pageSize);
-        return transactionHistoryService.findAllByIdOrInsertDate(id, insertDate, paging);
+            throw new IllegalArgumentException(HAS_VALUE_ID_OR_INSERT_DATE);
+        return transactionHistoryService.findAllByIdOrInsertDate(id, insertDate, PageRequest.of(pageNo, pageSize))
+                .orElseThrow(EntityNotFoundException::new);
     }
 }

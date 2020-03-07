@@ -44,7 +44,7 @@ class ConversionControllerImplTest {
                 .transactionId(1L)
                 .build());
 
-        var requestString = Mapper.mapper.writeValueAsString(createConversionRateRequest("TRY", "USD", amount));
+        var requestString = Mapper.jsonMapper.writeValueAsString(createConversionRateRequest("TRY", "USD", amount));
         mvc.perform(post("/exchangeRate/conversion")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestString))
@@ -66,7 +66,7 @@ class ConversionControllerImplTest {
                 .transactionId(1L)
                 .build());
 
-        var requestString = Mapper.mapper.writeValueAsString(createConversionRateRequest(null, "USD", amount));
+        var requestString = Mapper.jsonMapper.writeValueAsString(createConversionRateRequest(null, "USD", amount));
         mvc.perform(post("/exchangeRate/conversion")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestString))
@@ -86,7 +86,7 @@ class ConversionControllerImplTest {
                 .transactionId(1L)
                 .build());
 
-        var requestString = Mapper.mapper.writeValueAsString(createConversionRateRequest("USD", null, amount));
+        var requestString = Mapper.jsonMapper.writeValueAsString(createConversionRateRequest("USD", null, amount));
         mvc.perform(post("/exchangeRate/conversion")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestString))
@@ -106,7 +106,7 @@ class ConversionControllerImplTest {
                 .transactionId(1L)
                 .build());
 
-        var requestString = Mapper.mapper.writeValueAsString(createConversionRateRequest("USD", "TRY", null));
+        var requestString = Mapper.jsonMapper.writeValueAsString(createConversionRateRequest("USD", "TRY", null));
         mvc.perform(post("/exchangeRate/conversion")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestString))

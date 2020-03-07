@@ -7,10 +7,12 @@ import com.openpayd.currency.domain.service.TransactionHistoryService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,20 +27,22 @@ class TransactionHistoryServiceImpl implements TransactionHistoryService {
         this.transactionHistoryDtoConverter = transactionHistoryDtoConverter;
         this.transactionHistoryEntityConverter = transactionHistoryEntityConverter;
     }
-
-    public Long save(TransactionHistoryDto transactionHistoryDto) {
+    @Override
+    public Optional<Long> save(TransactionHistoryDto transactionHistoryDto) {
         var transactionHistory = transactionHistoryDtoConverter.convert(transactionHistoryDto);
         if (Objects.nonNull(transactionHistory)) {
-            return transactionHistoryRepository.save(transactionHistory).getId();
+            return Optional.of(transactionHistoryRepository.save(transactionHistory).getId());
         }
-        return null;
+        return Optional.empty();
     }
 
-    public List<TransactionHistoryDto> findAllByIdOrInsertDate(Long id, LocalDate insertDate, Pageable pageable) {
+    @Override
+    public Optional<List<TransactionHistoryDto>> findAllByIdOrInsertDate(Long id, LocalDate insertDate, Pageable pageable) {
         var transactionHistories = transactionHistoryRepository.findAllByIdOrInsertDate(id, insertDate, pageable);
-        return transactionHistories.stream()
+        if(CollectionUtils.isEmpty(transactionHistories))
+            return Optional.empty();
+        return Optional.of(transactionHistories.stream()
                 .map(transactionHistoryEntityConverter::convert)
-                .collect(Collectors.toList());
-
+                .collect(Collectors.toList()));
     }
 }

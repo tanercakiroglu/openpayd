@@ -47,20 +47,20 @@ class TransactionHistoryRepositoryTest {
     public void findByDate() {
         var result = subject.findAllByIdOrInsertDate(null, LocalDate.now(), null);
         assertNotNull(result);
-        assertEquals(result.size(), 5);
+        assertEquals(5,result.size());
     }
 
     @Test
     public void findById() {
         var result = subject.findAllByIdOrInsertDate(6L, null, null);
-        assertEquals(result.size(), 1);
+        assertEquals( 1,result.size());
     }
 
     @Test
     public void findByDateWithPaging() {
         Pageable paging = PageRequest.of(0, 2);
         var result = subject.findAllByIdOrInsertDate(null, LocalDate.now(), paging);
-        assertEquals(result.size(), 2);
+        assertEquals( 2,result.size());
     }
 
 }

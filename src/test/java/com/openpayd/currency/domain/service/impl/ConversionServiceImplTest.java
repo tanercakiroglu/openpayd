@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -59,7 +60,7 @@ public class ConversionServiceImplTest {
                         .target("USD")
                         .build());
 
-        when(transactionHistoryService.save(any())).thenReturn(1L);
+        when(transactionHistoryService.save(any())).thenReturn(Optional.of(1L));
         when(exchangeService.getExchangeRateAndCalculatePair(any())).thenReturn(new CalculatedExchangeRateDto.Builder()
                 .amount(new BigDecimal("12"))
                 .amountInTargetCurrency((new BigDecimal("12")))
@@ -78,11 +79,7 @@ public class ConversionServiceImplTest {
 
     @Test
     public void givenDateOrId_whenConversionHistoryWanted_thenReturnHistory()  {
-
-        when(transactionHistoryService.findAllByIdOrInsertDate(any(),any(),any())).thenReturn(new ArrayList<>());
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            conversionService.findAllConversionsByIdOrInsertDate(any(),any(),any(),any());
-        });
-
+        when(transactionHistoryService.findAllByIdOrInsertDate(any(),any(),any())).thenReturn(Optional.of(new ArrayList<>()));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> conversionService.findAllConversionsByIdOrInsertDate(any(),any(),any(),any()));
     }
 }

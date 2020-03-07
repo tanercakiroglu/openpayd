@@ -14,8 +14,6 @@ public class ApiError implements Serializable {
     private LocalDateTime timestamp;
     private int status;
 
-    public ApiError() {
-    }
 
     public List<String> getErrors() {
         return errors;

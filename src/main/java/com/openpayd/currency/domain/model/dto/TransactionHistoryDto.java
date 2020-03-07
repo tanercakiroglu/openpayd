@@ -48,8 +48,10 @@ public class TransactionHistoryDto {
 
     public static class Builder {
 
-        private String source, target;
-        private BigDecimal amount, amountInTargetCurrency;
+        private String source;
+        private String target;
+        private BigDecimal amount;
+        private BigDecimal amountInTargetCurrency;
         private LocalDate insertDate;
         private Long id;
 

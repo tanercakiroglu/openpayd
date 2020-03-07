@@ -3,11 +3,14 @@ package com.openpayd.currency.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-public class Mapper {
+public final class Mapper {
 
-    public static final ObjectMapper mapper = new ObjectMapper();
+    private Mapper() {
+    }
+
+    public static final ObjectMapper jsonMapper = new ObjectMapper();
 
     static {
-        mapper.registerModule(new JavaTimeModule());
+        jsonMapper.registerModule(new JavaTimeModule());
     }
 }

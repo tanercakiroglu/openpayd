@@ -17,6 +17,8 @@ import java.util.Objects;
 @Service
 class ExchangeServiceImpl implements ExchangeService {
 
+    private static final String CURRENCY_VALUE_NOT_FOUND = "Currency value not found";
+    private static final String BASE_CURRENCY = "EUR";
     private final ExchangeRateCalculator exchangeRateCalculator;
     private final ExchangeRateCalculationDtoConverter exchangeRateCalculationDtoConverter;
 
@@ -38,11 +40,12 @@ class ExchangeServiceImpl implements ExchangeService {
     }
 
     private CalculatedExchangeRateDto getCalculatedExchangeRateDto(ExchangeRateCalculationDto exchangeRateCalculationDto) throws IOException, BusinessException {
-        var exchangeRateDelegateResponse = ExchangeRateProviderManager.defaultProvider().create().getExchangeRateByDate();
+        var exchangeRateDelegateResponse = ExchangeRateProviderManager.defaultProvider().create().getLatestExchangeRate();
+        exchangeRateDelegateResponse.getRates().put(BASE_CURRENCY,BigDecimal.ONE);
         var source = exchangeRateDelegateResponse.getRates().get(exchangeRateCalculationDto.getSource());
         var target = exchangeRateDelegateResponse.getRates().get(exchangeRateCalculationDto.getTarget());
         if (Objects.isNull(source) || Objects.isNull(target)) {
-            throw new BusinessException("Currency value not found");
+            throw new BusinessException(CURRENCY_VALUE_NOT_FOUND);
         }
         var rate = exchangeRateCalculator.getExchangeRatePair(source, target);
         var amountInTargetCurrency = exchangeRateCalculator.calculateAmountInTargetCurrency(exchangeRateCalculationDto.getAmount(), rate);

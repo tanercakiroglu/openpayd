@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final String SOMETHING_WENT_WRONG = "Something went wrong...";
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    public static final String RESOURCE_NOT_FOUND = "Resource not found";
 
     @ExceptionHandler(value = BusinessException.class)
     public ResponseEntity<ApiError> businessException(BusinessException ex) {
@@ -60,10 +62,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(value = IllegalArgumentException.class)
-    public ResponseEntity<ApiError> remoteCallExceptionErrorHandler(IllegalArgumentException ex) {
+    public ResponseEntity<ApiError> illegalArgumentExceptionErrorHandler(IllegalArgumentException ex) {
         LOGGER.error("IllegalArgumentException Exception", ex);
         final ApiError errors = getApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = EntityNotFoundException.class)
+    public ResponseEntity<ApiError> entityNotFoundException(EntityNotFoundException ex) {
+        LOGGER.error("EntityNotFoundException Exception", ex);
+        final ApiError errors = getApiError(HttpStatus.NOT_FOUND, RESOURCE_NOT_FOUND);
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
     }
 
     @Override

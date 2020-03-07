@@ -42,8 +42,11 @@ public class CalculatedExchangeRateDto {
 
     public static class Builder {
 
-        private String source, target;
-        private BigDecimal amount, rate, amountInTargetCurrency;
+        private String source;
+        private String target;
+        private BigDecimal amount;
+        private BigDecimal rate;
+        private BigDecimal amountInTargetCurrency;
 
         public Builder() {
         }

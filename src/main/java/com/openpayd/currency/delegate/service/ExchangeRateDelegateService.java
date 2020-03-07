@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface ExchangeRateDelegateService {
 
-    ExchangeRateDelegateResponse getExchangeRateByDate() throws IOException;
+    ExchangeRateDelegateResponse getLatestExchangeRate() throws IOException;
 }
