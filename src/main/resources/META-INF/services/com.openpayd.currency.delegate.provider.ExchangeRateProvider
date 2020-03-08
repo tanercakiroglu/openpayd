@@ -1,1 +1,2 @@
+com.openpayd.currency.delegate.provider.impl.FixedRateExchangeRateProvider
 com.openpayd.currency.delegate.provider.impl.CentralBankExchangeRateProvider

@@ -39,10 +39,10 @@ public class ExchangeRateDelegateResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ExchangeRateDelegateResponse quote = (ExchangeRateDelegateResponse) o;
-        return Objects.equals(base, quote.base) &&
-                Objects.equals(rates, quote.rates) &&
-                Objects.equals(date, quote.date);
+        ExchangeRateDelegateResponse that = (ExchangeRateDelegateResponse) o;
+        return Objects.equals(base, that.base) &&
+                Objects.equals(rates, that.rates) &&
+                Objects.equals(date, that.date);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ExchangeRateDelegateResponse {
 
     @Override
     public String toString() {
-        return "Quote{" +
+        return "ExchangeRateDelegateResponse{" +
                 "base='" + base + '\'' +
                 ", rates=" + rates +
                 ", date=" + date +

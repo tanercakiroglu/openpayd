@@ -11,9 +11,9 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ExchangeRateDelegateServiceImpl implements ExchangeRateDelegateService {
+public class FixedRateDelegateService implements ExchangeRateDelegateService {
 
-    private static final String URL_PROVIDER = "https://api.ratesapi.io/api/latest";
+    private static final String URL_PROVIDER = "http://data.fixer.io/api/latest?access_key=081ef95f9564b7d56209c954a431918e";
     private static final OkHttpClient client = new OkHttpClient();
 
     @Override
@@ -22,7 +22,7 @@ public class ExchangeRateDelegateServiceImpl implements ExchangeRateDelegateServ
     }
 
     private String doGetRequest() throws IOException {
-        final Request request = new Request.Builder()
+        var request = new Request.Builder()
                 .url(URL_PROVIDER)
                 .build();
 
