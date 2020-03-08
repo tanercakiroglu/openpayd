@@ -11,7 +11,7 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Objects;
 
-public class FixedRateDelegateService implements ExchangeRateDelegateService {
+public class FixedRateDelegateServiceImpl implements ExchangeRateDelegateService {
 
     private static final String URL_PROVIDER = "http://data.fixer.io/api/latest?access_key=081ef95f9564b7d56209c954a431918e";
     private static final OkHttpClient client = new OkHttpClient();

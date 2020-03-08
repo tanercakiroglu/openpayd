@@ -28,5 +28,5 @@ public interface ConversionController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate insertDate,
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize
-    ) throws BusinessException;
+    ) ;
 }

@@ -30,7 +30,7 @@ public class ConversionControllerImpl implements ConversionController {
     }
 
     @Override
-    public ResponseEntity<List<TransactionHistoryDto>> getConversionList(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize) throws BusinessException {
+    public ResponseEntity<List<TransactionHistoryDto>> getConversionList(Long id, LocalDate insertDate, Integer pageNo, Integer pageSize) {
         return ResponseEntity.ok(conversionService.findAllConversionsByIdOrInsertDate(id, insertDate, pageNo, pageSize));
     }
 
